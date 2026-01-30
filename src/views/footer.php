@@ -1,0 +1,5 @@
+</body>
+<script src="../assets/app.js"></script>
+</body>
+
+</html>

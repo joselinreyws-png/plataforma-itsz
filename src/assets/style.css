@@ -1,0 +1,174 @@
+:root{
+  --bg:#0b132b;
+  --card:#111a3a80;          /* glass */
+  --ink:#e6edf6;
+  --muted:#9fb1c7;
+  --brand:#5bc0be;
+  --brand-ink:#062b2a;
+  --ring:#5bc0be;
+  --danger:#ef4444;
+  --radius:16px;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+#btnPrint,
+.btn-print { display: none !important; }
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+  color:var(--ink); background:radial-gradient(1200px 600px at 80% -10%, #2f3b66aa 0%, transparent 60%), var(--bg);
+  background-attachment: fixed;
+}
+
+/* ===== Auth layout ===== */
+.auth{
+  display:grid; place-items:center; min-height:100dvh; padding:32px;
+}
+.auth-wrap{
+  width:min(980px, 100%); display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px;
+}
+@media (max-width: 860px){
+  .auth-wrap{grid-template-columns:1fr}
+}
+.doc-content{
+  margin-top: 160px; /* 👈 AQUÍ SÍ BAJA */
+}
+
+
+/* Hero */
+.hero{
+  position:relative; overflow:hidden; border-radius:var(--radius);
+  padding:32px; background:linear-gradient(145deg,#1c2541 10%, #23395d 60%);
+  box-shadow:var(--shadow);
+}
+.hero h1{ margin:0 0 6px; font-size:clamp(22px, 3vw, 32px); letter-spacing:.2px }
+.hero p{ margin:0; color:var(--muted) }
+.hero .ribbon{
+  position:absolute; inset:auto -60px -60px auto; width:320px; height:320px;
+  filter:blur(40px); background:radial-gradient(closest-side,#5bc0be55,transparent 70%);
+  pointer-events:none; animation:float 10s ease-in-out infinite;
+}
+@keyframes float{ 0%,100%{ transform:translateY(0)} 50%{ transform:translateY(-12px)} }
+
+/* Card */
+.card{
+  backdrop-filter: blur(10px);
+  background: var(--card);
+  border:1px solid #2a3c6a;
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:var(--shadow);
+}
+.card h2{ margin:0 0 12px; font-size:22px }
+.card .hint{ color:var(--muted); font-size:14px; margin:6px 0 18px }
+
+.row{ display:grid; gap:12px }
+label{ font-size:14px; color:#cfe0ff; display:block; margin:4px 0 }
+input, select{
+  width:100%; padding:12px 14px; border-radius:12px; border:1px solid #31426e;
+  background:#0d1633; color:var(--ink); outline:0; transition: box-shadow .15s, border-color .15s, transform .02s;
+}
+input::placeholder{ color:#8898b3 }
+input:focus, select:focus{ border-color:var(--ring); box-shadow:0 0 0 3px #5bc0be33 }
+button{
+  width:100%; padding:12px 14px; border-radius:12px; border:0; cursor:pointer; font-weight:700;
+  background: var(--brand); color: var(--brand-ink);
+  transition: transform .04s ease, filter .15s ease;
+}
+button:hover{ filter:brightness(1.05) }
+button:active{ transform: translateY(1px) }
+
+.actions{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin-top:10px }
+.actions a{ color:var(--muted); text-decoration:none; font-size:14px }
+.actions a:hover{ color:var(--ink) }
+
+/* Mini badge */
+.badge{
+  display:inline-flex; align-items:center; gap:8px; font-size:12px;
+  padding:6px 10px; border-radius:999px; background:#0d1633; border:1px solid #2a3c6a; color:#cfe0ff;
+}
+
+
+.documento-editable {
+    min-height: 1100px;
+    padding: 80px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: white;
+  
+
+}
+  @media print{
+
+  @page{
+    size: A4;
+    margin: 0; /* ← QUITA MÁRGENES DEL PDF */
+  }
+
+  body{
+    margin: 0;
+  }
+
+  .toolbar{
+    display:none !important;
+  }
+
+  .page{
+    width:210mm;
+    min-height:297mm;
+    margin:0;
+    padding:32px 40px; /* puedes ajustar si quieres */
+    box-shadow:none;
+    border-radius:0;
+  }
+}
+
+  #editor{
+  position: relative;
+  z-index: 10;
+  padding-top: 200px; /* 👈 AQUÍ */
+}
+/* ===== FIRMAS ===== */
+.bloque-firmas {
+  margin-top: 20mm;
+  width: 100%;
+}
+
+.fila-superior {
+  display: table;
+  width: 100%;
+}
+
+.fila-superior .bloque-firma {
+  display: table-cell;
+  width: 50%;
+  text-align: center;
+  vertical-align: top;
+  padding: 0 10mm;
+}
+
+.fila-inferior {
+  margin-top: 15mm;
+  text-align: center;
+}
+
+.fila-inferior .bloque-firma {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.linea-firma {
+  border-top: 1px solid #000;
+  margin-bottom: 4mm;
+}
+
+.texto-firma {
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+
+
+
