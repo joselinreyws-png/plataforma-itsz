@@ -1,11 +1,11 @@
 <?php
-function db() {
 
-    $host = getenv("MYSQLHOST");
-    $port = getenv("MYSQLPORT");
-    $db   = getenv("MYSQLDATABASE");
-    $user = getenv("MYSQLUSER");
-    $pass = getenv("MYSQLPASSWORD");
+function db() {
+    $host = $_ENV['MYSQLHOST'];
+    $db   = $_ENV['MYSQLDATABASE'];
+    $user = $_ENV['MYSQLUSER'];
+    $pass = $_ENV['MYSQLPASSWORD'];
+    $port = $_ENV['MYSQLPORT'];
 
     try {
         $pdo = new PDO(
@@ -14,12 +14,13 @@ function db() {
             $pass,
             [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             ]
         );
+
         return $pdo;
 
     } catch (PDOException $e) {
-        die("Error conexión DB");
+        die("❌ Error conexión BD: " . $e->getMessage());
     }
 }
