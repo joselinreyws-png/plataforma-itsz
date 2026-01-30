@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
+
+session_start();
+
 require_once __DIR__ . '/../../conexion.php';
 
 $pdo = db();
-
-declare(strict_types=1);
-session_start();
 
 /* ==== Evitar página en blanco: mostrar errores en desarrollo ==== */
 error_reporting(E_ALL);
@@ -160,4 +161,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </form>
 </body>
 </html>
+
 
